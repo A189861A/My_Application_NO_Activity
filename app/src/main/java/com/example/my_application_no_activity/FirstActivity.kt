@@ -1,5 +1,6 @@
 package com.example.my_application_no_activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -16,7 +17,9 @@ class FirstActivity : AppCompatActivity() {
         setContentView(R.layout.first_layout)
         val btn1: Button = findViewById(R.id.btn1);
         btn1.setOnClickListener {
-            Toast.makeText(this, "Button_1 clicked", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Button_1 clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, SecondActivity::class.java);
+            startActivity(intent);
         }
 
     }

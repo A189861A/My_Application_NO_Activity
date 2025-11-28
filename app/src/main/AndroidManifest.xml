@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
+            android:name=".SecondActivity"
+            android:exported="false" />
+        <activity
             android:name=".FirstActivity"
-            android:label="This is First Activity"
-            android:exported="true" >
+            android:exported="true"
+            android:label="This is First Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
