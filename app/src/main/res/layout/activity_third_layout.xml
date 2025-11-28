@@ -13,4 +13,10 @@
         android:layout_height="wrap_content"
         android:text="Button 3"
     />
+
+    <!-- 加载HTTPS链接的WebView -->
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
