@@ -1,6 +1,7 @@
 package com.example.my_application_no_activity
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -18,10 +19,16 @@ class FirstActivity : AppCompatActivity() {
         val btn1: Button = findViewById(R.id.btn1);
         btn1.setOnClickListener {
 //            Toast.makeText(this, "Button_1 clicked", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, SecondActivity::class.java);
+//            显示Intent
+//            val intent = Intent(this, SecondActivity::class.java);
+//            隐式Intent
+//            val intent = Intent("com.example.my_application_no_activity.ACTION_START");
+
+//            使用隐式Intent打开第三方页面
+            val intent = Intent(Intent.ACTION_VIEW) //Intent.ACTION_VIEW：安卓内置动作
+            intent.data = Uri.parse("https://www.baidu.com");// 语法糖：intent.data == intent.setData
             startActivity(intent);
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

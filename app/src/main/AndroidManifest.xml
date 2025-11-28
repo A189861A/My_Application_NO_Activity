@@ -13,7 +13,12 @@
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
             android:name=".SecondActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.my_application_no_activity.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".FirstActivity"
             android:exported="true"
