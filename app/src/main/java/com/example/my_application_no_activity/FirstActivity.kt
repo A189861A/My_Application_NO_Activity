@@ -25,8 +25,10 @@ class FirstActivity : AppCompatActivity() {
 //            val intent = Intent("com.example.my_application_no_activity.ACTION_START");
 
 //            使用隐式Intent打开第三方页面
-            val intent = Intent(Intent.ACTION_VIEW) //Intent.ACTION_VIEW：安卓内置动作
-            intent.data = Uri.parse("https://www.baidu.com");// 语法糖：intent.data == intent.setData
+//            val intent = Intent(Intent.ACTION_VIEW) // Intent.ACTION_VIEW：安卓内置动作
+//            intent.data = Uri.parse("https://www.baidu.com");// 语法糖：intent.data == intent.setData
+//          拨打电话
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("tel:10086"));
             startActivity(intent);
         }
     }
