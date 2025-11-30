@@ -14,15 +14,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".ThirdActivity"
+            android:name=".MainActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".DialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:exported="false"/>
+        <activity
+            android:name=".NormalActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.my_application_no_activity.ACTION_START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ThirdActivity"
+            android:exported="true" />
         <activity
             android:name=".SecondActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.my_application_no_activity.ACTION_START" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -31,15 +52,12 @@
             android:exported="true"
             android:label="This is First Activity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-            <intent-filter >
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" />
+
+                <data android:scheme="https" android:host="baidu.com" />
             </intent-filter>
         </activity>
     </application>
