@@ -32,6 +32,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DialogActivity::class.java)
             startActivity(intent);
         }
+        if(savedInstanceState != null){
+            val tempData = savedInstanceState.getString("tempData")
+            Log.d("--MainActivity-oncreate--", "tempData: $tempData")
+        }
 
     }
 
@@ -58,5 +62,11 @@ class MainActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         Log.d("--MainActivity--", "onRestart")
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("--MainActivity--", "onSaveInstanceState")
+        val tempData = "Hello, this is a temp data"
+        outState.putString("tempData", tempData)
     }
 }
