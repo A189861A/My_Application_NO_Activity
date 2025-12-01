@@ -25,12 +25,19 @@ class SecondActivity : BaseActivity() {
         Log.d("--SecondActivity--", "data: $data")
 
         val btn2: Button = findViewById(R.id.button2);
+        val btn2_1: Button = findViewById(R.id.button2_1);
+
         btn2.setOnClickListener {
 //            Toast.makeText(this, "Button_2 clicked", Toast.LENGTH_SHORT).show()
              val intent = Intent(); // 构建Intent对象，传递数据
             intent.putExtra("data_return", "Hello FirstActivity");
             setResult(RESULT_OK, intent); // 设置返回结果
             finish(); // 关闭当前Activity
+        }
+
+        btn2_1.setOnClickListener {
+            val intent = Intent(this, FourActivity::class.java)
+            startActivity(intent)
         }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {

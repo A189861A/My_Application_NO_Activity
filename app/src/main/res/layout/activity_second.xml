@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context=".SecondActivity">
 
     <Button
@@ -14,5 +14,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:text="Button_2" />
+
+    <Button
+        android:id="@+id/button2_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Button_2_1" />
 
 </LinearLayout>
