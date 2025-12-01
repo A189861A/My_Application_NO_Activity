@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class FirstActivity : BaseActivity() {
+class FirstActivity : AppCompatActivity () {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_layout)
@@ -28,7 +28,7 @@ class FirstActivity : BaseActivity() {
 
 //            显示Intent打开第三方页面
 //            val intent = Intent(this, ThirdActivity::class.java);
-            intent.data = Uri.parse("https://www.baidu.com"); // 语法糖：intent.data == intent.setData
+//            intent.data = Uri.parse("https://www.baidu.com"); // 语法糖：intent.data == intent.setData
 //
 //            隐式Intent
 //            val intent = Intent("com.example.my_application_no_activity.ACTION_START");
@@ -38,7 +38,7 @@ class FirstActivity : BaseActivity() {
 //            intent.data = Uri.parse("https://www.baidu.com"); // 语法糖：intent.data == intent.setData
 //          拨打电话
 //            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("tel:10086"));
-            startActivity(intent);
+//            startActivity(intent);
         }
     }
 
