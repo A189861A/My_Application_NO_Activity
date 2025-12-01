@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if(isDestroyed) {
+            return
+        }
         Log.d("--BaseActivity--", javaClass.simpleName )
         ActivityCollector.addActivity(this);
     }
