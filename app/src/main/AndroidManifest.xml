@@ -14,11 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
+            android:name=".MainActivity2"
+            android:exported="true"
+            android:launchMode="standard"
+            android:theme="@style/Theme.My_Application_NO_Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".FourActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".DialogActivity"
             android:exported="false"
@@ -47,17 +58,10 @@
         <activity
             android:name=".FirstActivity"
             android:exported="true"
-            android:launchMode="standard"
-            android:label="This is First Activity">
+            android:label="This is First Activity"
+            android:launchMode="standard">
             <intent-filter>
-
-                <!-- <action android:name="android.intent.action.VIEW" /> -->
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
-                <!-- <data android:scheme="https" android:host="baidu.com" /> -->
             </intent-filter>
         </activity>
     </application>
