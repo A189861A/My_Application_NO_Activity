@@ -11,13 +11,13 @@
         android:background="#ccc"
         android:hint="Type something"
         />
+
     <Button
         android:id="@+id/send"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:text="Send"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        />
+        android:text="Send" />
 </LinearLayout>
