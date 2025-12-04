@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
-<!--    <include layout="@layout/title" />-->
+    android:id="@+id/main2"
+    android:orientation="vertical">
+
+    <include layout="@layout/title" />
     <TextView android:layout_width="match_parent"
         android:layout_height="match_parent"
             android:text="这是第二个Activity" />
