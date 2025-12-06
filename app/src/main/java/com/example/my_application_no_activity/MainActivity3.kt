@@ -32,7 +32,7 @@ class MainActivity3 : AppCompatActivity() {
     }
 
     private fun initFruits() {
-        repeat(2) {
+        repeat(20) {
             fruitList.add(Fruit("Apple", R.drawable.apple));
             fruitList.add(Fruit("Banana", R.drawable.banner));
             fruitList.add(Fruit("Orange", R.drawable.orange));
