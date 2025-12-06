@@ -12,6 +12,7 @@ class MainActivity3 : AppCompatActivity() {
         "Pear", "Grape", "Pineapple", "Strawberry", "Cherry", "Mango",
         "Apple", "Banana", "Orange", "Watermelon", "Pear", "Grape",
         "Pineapple", "Strawberry", "Cherry", "Mango");
+    private val fruitList = ArrayList<Fruit>();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +23,19 @@ class MainActivity3 : AppCompatActivity() {
 //        集合中的数据是无法直接传递给ListView的
 //        android.R.layout.simple_list_item_1作为ListView子项布局的id，这是一个
 //        Android内置的布局文件，里面只有一个TextView
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data)
+//        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data)
+//        listView.adapter = adapter;
+
+        initFruits();
+        val adapter = FruitAdapter(this, R.layout.fruit_item, fruitList);
         listView.adapter = adapter;
+    }
 
-
+    private fun initFruits() {
+        repeat(2) {
+            fruitList.add(Fruit("Apple", R.drawable.apple));
+            fruitList.add(Fruit("Banana", R.drawable.banner));
+            fruitList.add(Fruit("Orange", R.drawable.orange));
+        }
     }
 }
