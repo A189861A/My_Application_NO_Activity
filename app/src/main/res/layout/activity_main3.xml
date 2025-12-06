@@ -7,12 +7,9 @@
     android:orientation="vertical"
     tools:context=".MainActivity3">
 
-    <com.example.my_application_no_activity.widget.TitleLayout
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="这是第三个Activity" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
