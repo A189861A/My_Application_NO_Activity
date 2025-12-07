@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 //import androidx.core.view.ViewCompat
 //import androidx.core.view.WindowInsetsCompat
@@ -20,13 +21,18 @@ class MainActivity4 : AppCompatActivity() {
         * 创建布局管理器，并设置给 RecyclerView
         * LinearLayoutManager 是 RecyclerView 的默认布局管理器，它可以实现垂直和水平方向的线性布局
         * */
-        val layoutManager = LinearLayoutManager(this)
-        val recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerView)
+        val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        /*
+        * 优化：防止瀑布流自动补空白导致右侧偏移
+        * */
+        layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+        layoutManager.invalidateSpanAssignments()
+
+        val recyclerView =
+            findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerView)
         /*
         * 设置布局管理器的方向为水平方向
-        * LinearLayoutManager.HORIZONTAL 表示水平方向
         * */
-        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         recyclerView.layoutManager = layoutManager
         /*
         * 创建适配器，并设置给 RecyclerView
@@ -37,11 +43,22 @@ class MainActivity4 : AppCompatActivity() {
 
 
     }
+
     private fun initFruits() {
         repeat(20) {
-            fruitList.add(Fruit("Apple", R.drawable.apple))
-            fruitList.add(Fruit("Banana", R.drawable.banner))
-            fruitList.add(Fruit("Orange", R.drawable.orange))
+            fruitList.add(Fruit(getRandomLengthString("Apple"), R.drawable.apple))
+            fruitList.add(Fruit(getRandomLengthString("Banana"), R.drawable.banner))
+            fruitList.add(Fruit(getRandomLengthString("Orange"), R.drawable.orange))
         }
+    }
+
+    private fun getRandomLengthString(str: String): String {
+//        val n = (1..20).random()
+//        val builder = StringBuilder()
+//        repeat(n) {
+//            builder.append(str)
+//        }
+//        return builder.toString()
+        return str;
     }
 }
