@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="#aaffcc"
+    android:layout_marginRight="10dp"
+    >
+    <!-- 左侧图片 -->
+    <ImageView
+        android:id="@+id/fruit_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ff0000" />
+    <!-- 左侧文本 -->
+    <TextView
+        android:id="@+id/fruit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="水果名称"
+        android:background="#FFFFcc"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp" />
+
+</LinearLayout>

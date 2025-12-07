@@ -22,8 +22,16 @@ class MainActivity4 : AppCompatActivity() {
         * */
         val layoutManager = LinearLayoutManager(this)
         val recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerView)
-
+        /*
+        * 设置布局管理器的方向为水平方向
+        * LinearLayoutManager.HORIZONTAL 表示水平方向
+        * */
+        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         recyclerView.layoutManager = layoutManager
+        /*
+        * 创建适配器，并设置给 RecyclerView
+        * FruitAdapterRecycler 是自定义的适配器，用于将数据绑定到 RecyclerView中
+        * */
         val adapter = FruitAdapterRecycler(fruitList)
         recyclerView.adapter = adapter
 

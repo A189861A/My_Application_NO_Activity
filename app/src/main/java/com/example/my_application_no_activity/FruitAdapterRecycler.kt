@@ -31,7 +31,7 @@ class FruitAdapterRecycler(val fruitList: List<Fruit>) :
         * false: 不立即附加到父视图
         * */
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fruit_item, parent, false)
+            .inflate(R.layout.fruit_item_vertical, parent, false)
         return ViewHolder(view)
     }
     /*
