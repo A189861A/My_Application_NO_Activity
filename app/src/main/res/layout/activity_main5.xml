@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/main5"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    tools:context=".MainActivity5"
-    android:background="@drawable/message_left"
-    >
+    android:layout_height="match_parent"
+    android:background="#d8e0e8"
+    android:orientation="vertical"
+    tools:context=".MainActivity5">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#ff0000"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/inputText"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:hint="Type something here"
+            android:maxLines="2"
+            android:background="#00ff00"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:text="Send" />
+    </LinearLayout>
 </LinearLayout>
