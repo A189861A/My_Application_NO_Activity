@@ -51,7 +51,13 @@ class MainActivity5 : AppCompatActivity(), View.OnClickListener {
                 if (content.isNotEmpty()) {
                     val msg = Msg(content, Msg.TYPE_SENT)
                     msgList.add(msg)
+                    /*
+                    * notifyItemInserted 方法用于通知适配器，在指定位置插入新项
+                    * */
                     adapter?.notifyItemInserted(msgList.size - 1)
+                    /*
+                    * scrollToPosition 方法用于将 RecyclerView 滚动到指定位置
+                    * */
                     recyclerView.scrollToPosition(msgList.size - 1)
                     inputText.setText("")
                 }
