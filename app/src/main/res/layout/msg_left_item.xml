@@ -1,3 +1,13 @@
+<!--
+FrameLayout（帧布局）：核心特点是所有子 View 堆叠显示
+（后添加的 View 覆盖在前一个 View 上方），
+默认所有子 View 都对齐到布局的左上角。
+
+LinearLayout（线性布局）：核心特点是所有子 View 按添加顺序依次排列，
+默认所有子 View 都对齐到布局的左上角。
+
+-->
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
