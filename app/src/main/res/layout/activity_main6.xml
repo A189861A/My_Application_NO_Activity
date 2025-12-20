@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main6"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity6">
 
     <fragment
@@ -14,11 +14,12 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />
-    <fragment
-        android:id="@+id/rightFrag"
-        android:name="com.example.my_application_no_activity.RightFragment"
+<!--    所有的控件默认都会摆放在布局的左上角-->
+    <FrameLayout
+        android:id="@+id/rightLayout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1" >
+    </FrameLayout>
 
 </LinearLayout>
