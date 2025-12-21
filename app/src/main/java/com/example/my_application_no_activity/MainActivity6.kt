@@ -34,6 +34,8 @@ class MainActivity6 : AppCompatActivity() {
         * 向容器内添加或替换Fragment
         * */
         fragmentTransaction.replace(R.id.rightLayout, fragment)
+//        将一个事务添加到返回栈中
+        fragmentTransaction.addToBackStack(null)
 //        提交事务，调用commit()方法来完成
         fragmentTransaction.commit()
     }
