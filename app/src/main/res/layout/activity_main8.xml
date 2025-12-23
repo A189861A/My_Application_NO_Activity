@@ -1,0 +1,11 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/newsTitleLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <fragment
+        android:id="@+id/newsTitleFrag"
+        android:name="com.example.my_application_no_activity.NewsTitleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</FrameLayout>
