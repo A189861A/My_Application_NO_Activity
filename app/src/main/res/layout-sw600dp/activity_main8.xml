@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/newsTitleLayout"
     android:baselineAligned="false"
-    android:background="#0000ff"
+    android:background="#CCCCCC"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
@@ -11,6 +11,7 @@
         android:name="com.example.my_application_no_activity.NewsTitleFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:background="#DDDD00"
         android:layout_weight="1" />
 
     <FrameLayout
