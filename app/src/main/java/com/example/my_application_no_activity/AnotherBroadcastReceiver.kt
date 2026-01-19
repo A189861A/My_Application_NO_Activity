@@ -5,14 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 
-class MyBroadcastReceiver : BroadcastReceiver() {
+class AnotherBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-        Toast.makeText(context, "Received intent action -- " + intent.action, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Received in AnotherBroadcastReceiver", Toast.LENGTH_SHORT).show()
 
-        /*表示将这条广播截断，后面
-        的BroadcastReceiver将无法再接收到这条广播*/
-        abortBroadcast()
     }
 }

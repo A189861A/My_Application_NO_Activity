@@ -25,7 +25,10 @@ class MainActivity10 : AppCompatActivity() {
               默认情况下我们发出的自定义广播恰恰都是隐式广播。因此这里一定要调用setPackage()方法，指定这条广播是
               发送给哪个应用程序的，从而让它变成一条显式广播
             */
-            sendBroadcast(intent)
+//            sendBroadcast(intent)
+
+            sendOrderedBroadcast(intent, null)
+
         }
 
     }
