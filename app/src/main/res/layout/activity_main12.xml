@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="please input"
+
         android:layout_marginTop="100dp"
         android:background="#FF00FF"
         android:textSize="40sp"
