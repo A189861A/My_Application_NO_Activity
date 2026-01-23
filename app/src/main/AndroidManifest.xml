@@ -16,11 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".MainActivity11"
-            android:exported="true" >
-        </activity>
-        <activity
-            android:name=".LoginActivity"
+            android:name=".MainActivity12"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +25,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity11"
+            android:exported="true"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+        </activity>
+
         <receiver
             android:name=".AnotherBroadcastReceiver"
             android:enabled="true"
@@ -41,9 +45,7 @@
         <activity
             android:name=".MainActivity10"
             android:enabled="true"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
 
         <receiver
             android:name=".MyBroadcastReceiver"
