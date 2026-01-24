@@ -1,6 +1,7 @@
 package com.example.my_application_no_activity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,9 @@ class MainActivity13 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main13)
 
-        var saveButton = findViewById<Button>(R.id.saveButton)
+        val saveButton = findViewById<Button>(R.id.saveButton)
+        val restoreButton = findViewById<Button>(R.id.restoreButton)
+
         saveButton.setOnClickListener {
             /*
             * 指定SharedPreferences的文件名为data
@@ -23,6 +26,14 @@ class MainActivity13 : AppCompatActivity() {
             editor.putInt("age", 20)
             editor.putBoolean("married", false)
             editor.apply()
+        }
+
+        restoreButton.setOnClickListener {
+            val prefs = getSharedPreferences("data", MODE_PRIVATE)
+            val name = prefs.getString("name", "")
+            val age = prefs.getInt("age", 0)
+            val married = prefs.getBoolean("married", false)
+            Log.d("MainActivity13", "Name: $name, Age: $age, Married: $married")
         }
     }
 }
