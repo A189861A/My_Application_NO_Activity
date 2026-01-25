@@ -2,6 +2,7 @@ package com.example.my_application_no_activity
 
 import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -34,9 +35,9 @@ class MainActivity15 : AppCompatActivity() {
             * getReadableDatabase()：优先获取只读实例，若数据库只读则返回，否则返回可读写实例。
             * */
             val db = dbHelper.getWritableDatabase()
-//            ContentValues 是 Android 提供的一个用于存储键值对数据的类，主要用于数据库操作。
+            // ContentValues 是 Android 提供的一个用于存储键值对数据的类，主要用于数据库操作。
             val values1 = ContentValues().apply {
-// 开始组装第一条数据
+                // 开始组装第一条数据
                 put("name", "The Da Vinci Code")
                 put("author", "Dan Brown")
                 put("pages", 454)
@@ -45,7 +46,7 @@ class MainActivity15 : AppCompatActivity() {
             db.insert("Book", null, values1) // 插入第一条数据
 
             val values2 = ContentValues().apply {
-// 开始组装第二条数据
+                // 开始组装第二条数据
                 put("name", "The Lost Symbol")
                 put("author", "Dan Brown")
                 put("pages", 510)
@@ -53,18 +54,15 @@ class MainActivity15 : AppCompatActivity() {
             }
             db.insert("Book", null, values2) // 插入第二条数据
             Toast.makeText(this, "数据添加成功", Toast.LENGTH_SHORT).show()
-
-            val updateData = findViewById<android.widget.Button>(R.id.updateData)
-            updateData.setOnClickListener {
-                Toast.makeText(this, "数据更新成功", Toast.LENGTH_SHORT).show()
-
-                val db = dbHelper.getWritableDatabase()
-                val values = ContentValues()
-                values.put("price", 10.99)
-                db.update("Book", values, "name = ?", arrayOf("The Da Vinci Code"))
-
-            }
         }
 
+        val updateData = findViewById<android.widget.Button>(R.id.updateData)
+        updateData.setOnClickListener {
+            Toast.makeText(this, "数据更新成功", Toast.LENGTH_SHORT).show()
+            val db = dbHelper.getWritableDatabase()
+            val values = ContentValues()
+            values.put("price", 10.99)
+            db.update("Book", values, "name = ?", arrayOf("The Da Vinci Code"))
+        }
     }
 }
