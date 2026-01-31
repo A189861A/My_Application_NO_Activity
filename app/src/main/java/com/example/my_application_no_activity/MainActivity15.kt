@@ -20,7 +20,7 @@ class MainActivity15 : AppCompatActivity() {
         *   获取数据库帮助类实例，并调用 getWritableDatabase()/getReadableDatabase()
         *   这一步会触发数据库创建 → 进而执行 onCreate() 中的建表语句
         * */
-        val dbHelper = MyDatabaseHelper(this, "BookStore.db", 1)
+        val dbHelper = MyDatabaseHelper(this, "BookStore.db", 2)
 
         val createDatabase = findViewById<android.widget.Button>(R.id.createDatabase)
         createDatabase.setOnClickListener {
@@ -63,6 +63,88 @@ class MainActivity15 : AppCompatActivity() {
             val values = ContentValues()
             values.put("price", 10.99)
             db.update("Book", values, "name = ?", arrayOf("The Da Vinci Code"))
+        }
+
+        val replaceData = findViewById<android.widget.Button>(R.id.replaceData);
+        replaceData.setOnClickListener {
+            val db = dbHelper.getWritableDatabase();
+            db.beginTransaction()// 开始事务
+            var success = false
+            try {
+                db.delete("Book", null, null)
+                // 模拟异常情况
+                /*  if (true) {
+                      // 手动抛出一个异常，让事务失败
+                      throw NullPointerException()
+                  }*/
+                val values = ContentValues().apply {
+                    put("name", "Game of Thrones")
+                    put("author", "George Martin")
+                    put("pages", 720)
+                    put("price", 20.85)
+                }
+                db.insert("Book", null, values)
+                success = true // 标记事务成功
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                if (success) {
+                    db.setTransactionSuccessful() // 只有在事务成功时才标记为成功
+                }
+                db.endTransaction() // 最后统一结束事务
+            }
+        }
+
+        val deleateData = findViewById<android.widget.Button>(R.id.deleateData)
+        deleateData.setOnClickListener {
+            val db = dbHelper.getWritableDatabase()
+            try {
+                // 删除 Book 表中的所有数据
+                val deletedRows = db.delete("Book", null, null)
+                if (deletedRows > 0) {
+                    Toast.makeText(
+                        this,
+                        "数据删除成功，共删除 $deletedRows 条记录",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(this, "没有数据可删除", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Toast.makeText(this, "删除数据失败", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val queryData = findViewById<android.widget.Button>(R.id.queryData)
+        queryData.setOnClickListener {
+            val db = dbHelper.getWritableDatabase()
+            val cursor = db.query("Book", null, null, null, null, null, null)
+//            将游标移动到查询结果的第一行
+            if (cursor.moveToFirst()) {
+                do {
+                    // 遍历Cursor对象，取出数据并打印
+                    // 安全地获取列索引并读取数据
+//                    getColumnIndex 是 Android 中 Cursor 类的一个方法，用于获取指定列名在查询结果中的索引位置。以下是其主要功能和使用要点：
+                    val nameIndex = cursor.getColumnIndex("name")
+                    val authorIndex = cursor.getColumnIndex("author")
+                    val pagesIndex = cursor.getColumnIndex("pages")
+                    val priceIndex = cursor.getColumnIndex("price")
+                    if (nameIndex != -1 && authorIndex != -1 && pagesIndex != -1 && priceIndex != -1) {
+                        val name = cursor.getString(nameIndex)
+                        val author = cursor.getString(authorIndex)
+                        val pages = cursor.getInt(pagesIndex)
+                        val price = cursor.getDouble(priceIndex)
+                        Log.d("MainActivity", "book name : $name"+" &author : $author" +" &pages : $pages")
+                    }
+
+                } while (cursor.moveToNext())
+            } else {
+                Toast.makeText(this, "查询结果为空", Toast.LENGTH_SHORT).show()
+            }
+
+//            必须调用 cursor.close() 释放资源，防止内存泄漏
+            cursor.close()
         }
     }
 }
