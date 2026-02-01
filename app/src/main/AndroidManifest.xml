@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".MainActivity15"
+            android:name=".MainActivity16"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,12 +30,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity14"
+            android:name=".MainActivity15"
             android:exported="true">
         </activity>
         <activity
-            android:name=".MainActivity13"
+            android:name=".MainActivity14"
             android:exported="true"></activity>
+        <activity
+            android:name=".MainActivity13"
+            android:exported="true" />
         <activity
             android:name=".MainActivity12"
             android:exported="true" />
