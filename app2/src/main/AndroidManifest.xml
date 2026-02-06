@@ -13,27 +13,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".MainActivityUser"
-            android:exported="true" >
+            android:name=".MainActivity2"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivityUser"
+            android:exported="true">
+        </activity>
 
         <provider
             android:name=".UserContentProvider"
             android:authorities="com.example.app2.userprovider"
-            android:permission="com.example.app2.PERMISSION_ACCESS_USER_DATA"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:permission="com.example.app2.PERMISSION_ACCESS_USER_DATA" />
 
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
