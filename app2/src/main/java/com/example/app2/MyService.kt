@@ -27,6 +27,7 @@ class MyService : Service() {
     * 该对象用于与客户端进行通信。
     * 当客户端调用 bindService 方法绑定服务时，系统会调用该方法并返回一个 IBinder 对象，
     * 客户端可以通过该对象调用服务中的方法。
+    * IBinder: 是 Android 中实现组件间通信的核心接口，通过 Binder 类的实现，它为服务与客户端之间提供了一种高效、安全的通信机制
     * */
 
     override fun onBind(intent: Intent): IBinder {
