@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
 
@@ -60,7 +61,22 @@ class MainActivity7 : AppCompatActivity() {
         // job.cancel()
         // job.join() // 等待协程取消完成（可选）
 
-        // 协程是非阻塞的，这里会立即执行
+        /*
+        * 阻塞式协程作用域
+        * 创建一个新的协程作用域，并且阻塞当前线程，直到该作用域内的所有协程都执行完毕
+        * */
+        val start = System.currentTimeMillis()
+        runBlocking {
+            repeat(100000) {
+                launch {
+                    println(".")
+                }
+            }
+        }
+        val end = System.currentTimeMillis()
+        println("阻塞式协程作用域耗时：${end - start}")
+
+        //lifecycleScope.launch是非阻塞的协程作用域，这里会立即执行
         println("onCreate 执行完毕")
     }
 
