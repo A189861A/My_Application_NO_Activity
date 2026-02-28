@@ -48,8 +48,8 @@ class MyServiceFront : Service() {
         // 判断设备是否运行 Android 8.0 或更高版本。
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                "my_service", "前台Service通知",
-                NotificationManager.IMPORTANCE_DEFAULT
+                "my_service", "前台Service通知",//唯一标识符，用于在应用中区分不同的通知渠道
+                NotificationManager.IMPORTANCE_DEFAULT //默认级别，有声音但不弹出
             )
             manager.createNotificationChannel(channel)
         }
@@ -65,12 +65,16 @@ class MyServiceFront : Service() {
         * 2. 权限委托: 其他应用可以通过 PendingIntent 执行你应用中的操作，而无需直接访问你的应用组件。
         * */
         val pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
-        // 创建通知
+        // 创建通知时指定渠道 ID
         val notification = NotificationCompat.Builder(this, "my_service")
             .setContentTitle("This is content title")
             .setContentText("This is content text")
             .setSmallIcon(R.drawable.small_icon)
-            // BitmapFactory 是 Android 中用于创建 Bitmap 对象的工具类.
+            /*
+            * BitmapFactory 是 Android 中用于创建 Bitmap 对象的工具类.
+            * Bitmap: 理图片的核心类，本质上是「内存中存储像素数据的位图，
+            * 用于加载、显示、处理图片（比如缩放、裁剪、旋转），也是自定义 View、图片渲染、相册开发的基础。
+            * */
             .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.large_icon))
             .setContentIntent(pi) // 设置点击通知打开的 Activity. 设置用户点击通知时要执行的操作
             .setAutoCancel(true) // 点击后自动关闭通知

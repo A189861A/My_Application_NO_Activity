@@ -22,6 +22,12 @@ class MyService : Service() {
             return 0
         }
     }
+    /*
+    * onBind 方法是 Service 类中的一个回调方法，用于返回一个 IBinder 对象，
+    * 该对象用于与客户端进行通信。
+    * 当客户端调用 bindService 方法绑定服务时，系统会调用该方法并返回一个 IBinder 对象，
+    * 客户端可以通过该对象调用服务中的方法。
+    * */
 
     override fun onBind(intent: Intent): IBinder {
         return mBinder;
