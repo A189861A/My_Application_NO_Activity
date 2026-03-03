@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+    <group> 是一个逻辑分组容器， 可以对一组菜单项进行统一配置
+    android:checkableBehavior="single"：表示该组中的项目只能单选
+    -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navCall"
+            android:icon="@drawable/ic_menu"
+            android:title="Call" />
+        <item
+            android:id="@+id/navFriends"
+            android:icon="@drawable/ic_menu"
+            android:title="Friends" />
+        <item
+            android:id="@+id/navLocation"
+            android:icon="@drawable/ic_menu"
+            android:title="Location" />
+        <item
+            android:id="@+id/navMail"
+            android:icon="@drawable/ic_menu"
+            android:title="Mail" />
+        <item
+            android:id="@+id/navTask"
+            android:icon="@drawable/ic_menu"
+            android:title="Tasks" />
+    </group>
+</menu>

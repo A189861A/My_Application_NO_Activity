@@ -13,6 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +73,28 @@ class MainActivity : AppCompatActivity() {
                     it.setHomeAsUpIndicator(resizedDrawable)
                 }
             }
+        }
+
+        val navView = findViewById<NavigationView>(R.id.navView)
+        /*
+        * 用于处理 NavigationView（侧滑导航菜单） 中菜单项点击事件的核心方法。
+        * */
+        navView.setNavigationItemSelectedListener {
+            menuItem ->
+//             处理菜单项点击事件
+            when (menuItem.itemId) {
+                R.id.navCall -> {
+                    // 处理 Home 菜单项点击事件
+                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                }
+                R.id.navFriends -> {
+                    // 处理 Favorites 菜单项点击事件
+                    Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show()
+                }
+            }
+            val drawerLayout = findViewById<DrawerLayout>(R.id.main)
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true;
         }
     }
 
