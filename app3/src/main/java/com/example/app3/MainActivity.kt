@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +23,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val fab = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            Toast.makeText(this, "FAB 点击事件", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "FAB 点击事件", Toast.LENGTH_SHORT).show()
 //            val drawerLayout = findViewById<DrawerLayout>(R.id.main)
 //            drawerLayout.openDrawer(GravityCompat.START)
+            view ->
+            Snackbar.make(view, "FAB 点击事件", Snackbar.LENGTH_SHORT)
+                .setAction("操作") {
+                    Toast.makeText(this, "操作点击事件", Toast.LENGTH_SHORT).show()
+                }
+                .show()
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
