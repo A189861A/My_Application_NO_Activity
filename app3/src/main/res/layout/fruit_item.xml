@@ -1,0 +1,41 @@
+<!--
+    MaterialCardView是一个FrameLayout
+    因此它没有什么方便的定位方式，这里我们只好在MaterialCardView中再嵌套一个LinearLayout，然后在
+    LinearLayout中放置具体的内容。
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="4dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--
+            scaleType：图片缩放类型
+                 matrix (矩阵模式 - 默认值)
+                 fitXY (拉伸填满)
+                 fitStart (保持比例 - 靠上对齐)，图片完整显示
+                 fitCenter (保持比例 - 居中对齐)，图片完整显示
+                 fitEnd (保持比例 - 靠下对齐)，图片完整显示
+                 center (居中不缩放)，图片保持原样，图片可能会被裁剪
+                 centerCrop (居中裁剪，保持比例。缩放图片)，使得 宽和高 都大于或等于 ImageView 的尺寸
+                 centerInside (居中缩放包含)，使得 宽和高 都小于或等于 ImageView 的尺寸。
+        -->
+        <ImageView
+            android:id="@+id/fruitImage"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerInside" />
+        <TextView
+            android:id="@+id/fruitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:textSize="16sp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
