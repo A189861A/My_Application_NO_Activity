@@ -20,6 +20,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        val fab = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
+            Toast.makeText(this, "FAB 点击事件", Toast.LENGTH_SHORT).show()
+//            val drawerLayout = findViewById<DrawerLayout>(R.id.main)
+//            drawerLayout.openDrawer(GravityCompat.START)
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

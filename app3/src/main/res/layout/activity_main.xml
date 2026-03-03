@@ -37,6 +37,15 @@
                 android:text="This is content"
                 android:textColor="#000"
                 android:textSize="30sp" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="36dp"
+                app:elevation="8dp"
+                app:maxImageSize="64dp"
+                android:src="@drawable/ic_add_circle_outline" />
         </FrameLayout>
     </LinearLayout>
 
