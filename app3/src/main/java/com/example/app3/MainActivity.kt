@@ -39,18 +39,35 @@ class MainActivity : AppCompatActivity() {
             it.title = "应用标题"
             it.setDisplayHomeAsUpEnabled(true)// 显示返回按钮
 //            it.setHomeAsUpIndicator(R.drawable.ic_menu)// 自定义返回按钮图标
-
+            /*
+            * 1.ContextCompat：是 AndroidX 库中的一个类，提供向下兼容（Backward Compatibility）的支持。
+            * 2.getDrawable()：是 ContextCompat 类中的一个方法，用于从资源文件中获取 Drawable 对象。
+            * 3.Drawable ：是 Android 中用于表示图像的抽象类，可以表示各种类型的图像，如位图、形状、颜色等。
+            *   任何继承自 Drawable 的对象都可以被绘制到 Canvas（画布）上.
+            *   Drawable 的常见子类 (类型):BitmapDrawable 、ShapeDrawable、ColorDrawable 等。
+            *
+            * */
             val originalDrawable = ContextCompat.getDrawable(this, R.drawable.ic_menu)
             originalDrawable?.let { drawable ->
                 /* 创建指定大小的 drawable
-                *
                 * */
                 if (drawable is BitmapDrawable) {
+                    /*
+                    * Bitmap：是 Android 中用于表示位图的类。
+                    *      屏幕上看到的图片的数字化表示（例如：.png 或 .jpg 文件被解码到内存后，就变成了 Bitmap 对象
+                    * Bitmap.createScaledBitmap()：是 Bitmap 类中的一个静态方法，用于创建一个指定大小的位图。
+                    * */
                     val resizedBitmap = Bitmap.createScaledBitmap(
-                        drawable.bitmap,
-                        200, 200,
-                        true
+                        drawable.bitmap, // 源 Bitmap 对象
+                        200, // 目标宽度
+                        200, // 目标高度
+                        true // 是否开启抗锯齿（滤波）
                     )
+                    /*
+                    * 在 Android 开发中，存在两种处理图片的体系：
+                    * Bitmap 体系：侧重于数据处理。它负责存储像素点，进行解码、缩放、像素修改等底层操作。它是“死”的数据块。
+                    * Drawable 体系：侧重于UI 渲染。它是 View 能够理解的对象。View（如 ImageView、Button）只能接受 Drawable 作为背景或图片源。
+                    * */
                     val resizedDrawable = BitmapDrawable(resources, resizedBitmap)
                     it.setHomeAsUpIndicator(resizedDrawable)
                 }
