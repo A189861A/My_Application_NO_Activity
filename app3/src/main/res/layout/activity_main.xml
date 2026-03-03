@@ -24,7 +24,7 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <!-- 主内容区域 -->
-        <FrameLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#DDDDDD"
@@ -46,7 +46,7 @@
                 app:elevation="8dp"
                 app:maxImageSize="64dp"
                 android:src="@drawable/ic_add_circle_outline" />
-        </FrameLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </LinearLayout>
 
     <!-- 抽屉菜单 -->
