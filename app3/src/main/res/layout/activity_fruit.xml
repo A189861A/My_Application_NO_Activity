@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    CoordinatorLayout：协调布局，用于协调子视图之间的交互.
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FruitActivity">
+    <!--
+        AppBarLayout：应用栏布局，用于包含工具栏和其他应用栏相关的视图.
+        - 核心特点是：它内部的子视图可以响应滚动事件
+        - AppBarLayout 必须作为 CoordinatorLayout 的直接子视图。它不能单独发挥作用。
+        工作原理三要素：
+                1.父容器：必须是 CoordinatorLayout。
+                2.顶部容器：AppBarLayout 包裹着 Toolbar。
+                3.滚动视图：下方的 RecyclerView 或 NestedScrollView 必须设置 app:layout_behavior。
+           关键属性：layout_scrollFlags
+                这是 AppBarLayout 内部子视图（比如 Toolbar）最重要的属性。它决定了这个子视图在滚动时的具体行为
+    -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#2E8B57"
+        android:id="@+id/appBar">
+        <!--
+            CollapsingToolbarLayout：折叠工具栏布局，用于实现折叠效果.它是 AppBarLayout 的直接子视图.
+            它不能单独使用，必须放在 AppBarLayout 里面，并且通常配合 CoordinatorLayout 使用。
+            - app:layout_scrollFlags：指定折叠效果的行为
+            - app:layout_collapseMode：指定折叠模式 (设置在子视图上)，有两种值：
+                1. pin：工具栏会固定在顶部，不会折叠。
+                2. parallax：工具栏会 parallax 效果，即滚动时会有 parallax 效果。
+        -->
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentScrim="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/fruitImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                app:layout_collapseMode="parallax" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <!--
+        NestedScrollView：支持嵌套滚动的视图容器，用于实现滚动效果. ScrollView 的进化版。
+        重要属性: android:fillViewport="true", 填充视口。
+            即使内部内容很少，NestedScrollView 也会强制撑满整个屏幕（或父容器）
+    -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="35dp"
+                android:background="#ddd"
+                app:cardCornerRadius="4dp">
+                <TextView
+                    android:id="@+id/fruitContentText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_circle_outline"
+        app:layout_anchor="@id/appBar"
+        app:layout_anchorGravity="bottom|end" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

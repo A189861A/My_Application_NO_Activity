@@ -1,6 +1,7 @@
 package com.example.app3.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.app3.FruitActivity
 import com.example.app3.R
 import com.example.app3.model.App3Fruit
 
@@ -41,7 +43,17 @@ class FruitAdapter (val context: Context, private val fruitList: List<App3Fruit>
 ，      *    表示不将视图添加到父容器中，而是返回一个未添加的视图.这样可以避免重复添加视图，提高性能.
         * */
         val view = LayoutInflater.from(context).inflate(R.layout.fruit_item, parent, false)
-        return ViewHolder(view)
+        val holder = ViewHolder(view)
+        holder.itemView.setOnClickListener {
+            val position = holder.adapterPosition
+            val fruit = fruitList[position]
+            val intent = Intent(context, FruitActivity::class.java).apply {
+                putExtra(FruitActivity.FRUIT_NAME, fruit.name)
+                putExtra(FruitActivity.FRUIT_IMAGE_ID, fruit.imageId)
+            }
+            context.startActivity(intent)
+        }
+        return holder
     }
     /*
     * 从数据源中取出对应位置的数据，并把这个数据填充（设置）到 ViewHolder 所持有的控件（如 TextView, ImageView）中
