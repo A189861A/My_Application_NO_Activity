@@ -36,7 +36,11 @@ class MainActivity4 : AppCompatActivity() {
         *  - 它会自动使用 当前 Activity 的类名 作为文件名（例如 MainActivity.xml）。
         *  - 它创建的文件仅属于当前 Activity，通常不建议在其他地方访问它。
         * */
-        sp = getPreferences(Context.MODE_PRIVATE)
+        sp = getPreferences(Context.MODE_PRIVATE) // Context.MODE_PRIVATE:表示只有当前应用可以读写这个文件
+        /*
+        * - key: 数据的名字（键）。就是你之前存数据时用的那个名字。
+        * - defValue: 默认值。如果找不到这个键，就返回这个默认值。
+        * */
         val countReserved = sp.getInt("count_reserved", 0)
 
         /*
@@ -51,6 +55,7 @@ class MainActivity4 : AppCompatActivity() {
         * ViewModelProvider：仓库管理员。
         * owner：仓库的房间号（决定了 ViewModel 存在哪里）。
         * factory：制造图纸（决定了 ViewModel 怎么造出来）。
+        * - .get：获取（或创建）一个指定类型的 ViewModel 实例。
         * */
         viewModel = ViewModelProvider(this,Main4ViewModelFactory(countReserved))
             .get(Main4ViewModel::class.java)
@@ -78,5 +83,18 @@ class MainActivity4 : AppCompatActivity() {
 
     private fun refreshCounter() {
         binding.infoText.text = viewModel.counter.toString()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        /*
+        * # SharedPreferences.Editor:
+        * - 编辑器对象，用于写入数据。
+        * - 通过 getSharedPreferences() 方法获取的 SharedPreferences 对象，
+        *   然后调用 edit() 方法获取一个编辑器对象。
+        * - 通过 putXXX() 方法将数据写入编辑器对象中。
+        * - 通过 apply() 方法将数据写入文件。
+        * */
+        sp.edit().putInt("count_reserved", viewModel.counter).apply()
     }
 }
