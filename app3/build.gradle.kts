@@ -52,6 +52,13 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
+    // 移除旧依赖
+    // implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    // 添加新依赖
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.4.0")
+
+
 }

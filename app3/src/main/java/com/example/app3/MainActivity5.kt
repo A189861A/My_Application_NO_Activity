@@ -52,6 +52,8 @@ class MainActivity5 : AppCompatActivity() {
     }
     override fun onPause() {
         super.onPause()
+        // 保存数据
+        // 在 Kotlin 中，?: 空值合并操作符。(如果左边的表达式不为 null，就返回左边；如果为 null，就返回右边)
         sp.edit { putInt("count_reserved", viewModel.counter.value ?: 0) }
     }
 }
