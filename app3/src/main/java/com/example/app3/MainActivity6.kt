@@ -18,7 +18,7 @@ class MainActivity6 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main6)
 
-        var setUserBtn = findViewById<android.widget.Button>(R.id.setUserBtn)
+        var getUserBtn = findViewById<android.widget.Button>(R.id.getUserBtn)
         var getAllUsersBtn = findViewById<android.widget.Button>(R.id.getAllUsersBtn)
         var tv = findViewById<android.widget.TextView>(R.id.tv);
 
@@ -41,7 +41,7 @@ class MainActivity6 : AppCompatActivity() {
             }
         }
 
-        setUserBtn.setOnClickListener {
+        getUserBtn.setOnClickListener {
             // 模拟用户ID变化（比如点击按钮切换）
             viewModel.getUserBtn("1001") // 触发加载张三的信息
             // 延迟后切换ID

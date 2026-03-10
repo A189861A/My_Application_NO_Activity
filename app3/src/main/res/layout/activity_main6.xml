@@ -19,11 +19,11 @@
         app:layout_constraintVertical_bias="0.07" />
 
     <Button
-        android:id="@+id/setUserBtn"
+        android:id="@+id/getUserBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
-        android:text="setUserBtn"
+        android:text="getUserBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +37,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setUserBtn"
+        app:layout_constraintTop_toBottomOf="@+id/getUserBtn"
         app:layout_constraintVertical_bias="0.152" />
 </androidx.constraintlayout.widget.ConstraintLayout>
