@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.sunnyweather.ui.CityChangeActivity
 import com.example.sunnyweather.viewModel.WeatherViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -27,9 +28,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
+        initView()
+        initVM()
+        playBgVideo()
+        observeData()
     }
     private fun initView() {
         videoView = findViewById(R.id.videoView)
