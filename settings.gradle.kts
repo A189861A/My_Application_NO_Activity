@@ -23,3 +23,4 @@ rootProject.name = "My_Application_NO_Activity"
 include(":app")
 include(":app2")
 include(":app3")
+include(":sunnyweather")
