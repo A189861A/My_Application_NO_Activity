@@ -1,4 +1,5 @@
 package com.example.sunnyweather.network
+import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
@@ -12,7 +13,8 @@ object ApiService {
     private const val TOKEN = "teHHeQ4HjH4SuMQ2"
 
     fun getWeather(city: String, callback: (String) -> Unit) {
-        val url = "https://api.caiyunapp.com/v2.6/$TOKEN/101.6656,39.2072/realtime"
+        Log.d("--city--", "city: $city")
+        val url = "https://api.caiyunapp.com/v2.6/$TOKEN/$city/realtime"
 
         val client = OkHttpClient()
         val request = Request.Builder().url(url).build()

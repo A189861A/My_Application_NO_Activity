@@ -10,6 +10,10 @@ import com.google.gson.Gson
 * */
 class WeatherRepo {
     fun fetchWeather(city: String, callback: (WeatherResponse) -> Unit) {
+        /*
+        * it: 特殊的标识符名称,它的出现通常只有一个场景：当 Lambda 表达式（匿名函数）只有 一个参数 时。
+        * 表示传入的参数，即城市名称。
+        * */
         ApiService.getWeather(city) {
             val data = Gson().fromJson(it, WeatherResponse::class.java)
             callback(data)

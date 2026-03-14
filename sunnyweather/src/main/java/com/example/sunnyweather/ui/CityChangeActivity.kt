@@ -18,9 +18,16 @@ class CityChangeActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
             val city = edit.text.toString().trim()
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("city", city)
-            startActivity(intent)
+            val intent = Intent()
+            intent.putExtra("city", city) // 把数据放入 Intent
+            /*
+            * 返回数据给上一个Activity
+            *
+            * 第一个参数：结果码，用于标识返回结果的状态
+            *  - 结果码：RESULT_OK 表示成功，RESULT_CANCELED 表示取消
+            * */
+            setResult(RESULT_OK, intent)
+            //关闭当前页面，回到父页面
             finish()
         }
     }

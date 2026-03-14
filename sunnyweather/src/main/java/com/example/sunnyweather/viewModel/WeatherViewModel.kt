@@ -6,7 +6,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.sunnyweather.model.WeatherResponse
 import com.example.sunnyweather.repository.WeatherRepo
 import kotlinx.coroutines.launch
-
+/*
+* WeatherViewModel：是一个 ViewModel 类，
+* - 管理UI数据。
+* - 处理业务逻辑。
+* */
 class WeatherViewModel : ViewModel() {
     private val repo = WeatherRepo()
     /*
@@ -26,7 +30,9 @@ class WeatherViewModel : ViewModel() {
         * - launch: 创建一个新的协程，并启动它。
         *     参数：block: suspend () -> Unit：协程体，即需要执行的代码块。
         *     返回值：Job：协程任务对象，可以通过它来取消协程。
-        * */
+        * - suspend：修饰符，用于标记一个函数或方法为挂起函数，可以在协程中调用。
+        * - postValue：将数据更新到 LiveData 中，并通知所有观察者。
+        * * */
         viewModelScope.launch {
             repo.fetchWeather(city) {
                 weatherData.postValue(it)

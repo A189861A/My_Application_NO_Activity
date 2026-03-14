@@ -1,6 +1,6 @@
 package com.example.sunnyweather.model
 
-//数据类
+//数据模型，定义天气数据结构
 /*
 * data class ：是 Kotlin 中专门用于存储数据的类，
 *   它会自动为你生成一系列实用的方法，让你能够更简洁、更高效地处理数据。
