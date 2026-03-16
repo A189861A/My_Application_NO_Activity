@@ -62,6 +62,9 @@ class MainActivity : AppCompatActivity() {
         weather = findViewById(R.id.weather)
         refresh = findViewById(R.id.refresh)
         findViewById<Button>(R.id.btn_change).setOnClickListener {
+            /*
+            * launch：启动一个 Activity。
+            * */
             cityChangeLauncher.launch(Intent(this, CityChangeActivity::class.java))
         }
     }
