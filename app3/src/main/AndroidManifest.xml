@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 声明需要的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 声明电话功能不是必需的，消除硬件警告 -->
+    <uses-feature android:name="android.hardware.telephony" android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -9,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".MainActivity8"
+            android:name=".MainActivity9"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity7"
+            android:name=".MainActivity8"
             android:exported="true">
-
         </activity>
+        <activity
+            android:name=".MainActivity7"
+            android:exported="true" />
         <activity
             android:name=".MainActivity6"
             android:exported="true" />

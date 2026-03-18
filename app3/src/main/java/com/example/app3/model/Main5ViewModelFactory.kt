@@ -10,6 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 * */
 class Main5ViewModelFactory(private val countReserved: Int) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MainViewModel(countReserved) as T
+        /*
+        *
+        * 检查请求的ViewModel类是否是MainViewModel的子类
+        * */
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            return MainViewModel(countReserved) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

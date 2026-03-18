@@ -68,5 +68,12 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
     implementation("androidx.work:work-runtime-ktx:2.9.0")
+    /**
+     * project:
+     *  - 引用项目中的其他模块（如 mylibrary）。
+     *  - 这允许你在 app3 中使用 mylibrary 模块中的代码。
+     *  - 本地项目内的模块，无需版本号。远程库需版本号。
+    */
+    implementation(project(":mylibrary"))
 
 }
