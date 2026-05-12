@@ -1,5 +1,7 @@
 package com.example.app4
 
+import androidx.compose.material3.ExperimentalMaterial3Api
+
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.compose.setContent
@@ -13,9 +15,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.MaterialTheme
@@ -30,6 +36,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.core.view.ViewCompat
@@ -37,12 +46,30 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.app4.ui.theme.My_Application_NO_ActivityTheme
 
 class MainActivity5 : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             My_Application_NO_ActivityTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    topBar = {
+                        TopAppBar(
+                            title = { Text("Compose Demo") },
+                            colors = TopAppBarDefaults.topAppBarColors(
+                                containerColor = Color.Yellow
+                            ),
+                            )
+                    },
+                    floatingActionButton = {
+                        FloatingActionButton(onClick = {
+                            Toast.makeText(this@MainActivity5, "添加功能开发中", Toast.LENGTH_SHORT).show()
+                        }) {
+                            Icon(Icons.Filled.Add, contentDescription = "Add")
+                        }
+                    },
+                    modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    // 主内容区域
                     LoginScreen(innerPadding)
                 }
             }
@@ -114,6 +141,17 @@ class MainActivity5 : ComponentActivity() {
             }) {
                 Text("还没有账号？立即注册")
             }
+
+            // 带阴影悬浮按钮
+        /*    ElevatedButton(onClick = { }) {
+                Text("返回")
+            }*/
+
+            // 悬浮圆形按钮
+        /*    FloatingActionButton(onClick = { }) {
+                Icon(Icons.Default.Person, contentDescription = null)
+            }*/
+
         }
     }
 
