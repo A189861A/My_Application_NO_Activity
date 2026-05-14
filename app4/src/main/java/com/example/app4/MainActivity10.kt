@@ -1,6 +1,7 @@
 package com.example.app4
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,6 +28,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import com.example.app4.ui.theme.My_Application_NO_ActivityTheme
 import java.util.regex.Pattern
@@ -34,6 +36,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.app4.components.PasswordTextField
+import kotlinx.coroutines.delay
 
 class MainActivity10 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +55,15 @@ class MainActivity10 : ComponentActivity() {
 
     @Composable
     fun LoginForm(innerPadding: PaddingValues) {
+        /*
+        * LaunchedEffect 用于在 Composable 函数中执行 一次性 操作（如初始化、网络请求）
+        * */
+        LaunchedEffect(Unit) {
+            // 执行初始化操作
+            delay(1000)
+            Log.d("Compose", "Initialization complete")
+        }
+
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var showDeleteDialog by remember { mutableStateOf(false) }
