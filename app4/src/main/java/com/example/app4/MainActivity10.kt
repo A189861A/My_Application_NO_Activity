@@ -14,6 +14,8 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ButtonDefaults
+import com.example.app4.components.DeleteConfirmDialog
+import com.example.app4.components.CustomDialog
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,6 +33,7 @@ import java.util.regex.Pattern
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.example.app4.components.PasswordTextField
 
 class MainActivity10 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,17 +76,32 @@ class MainActivity10 : ComponentActivity() {
                 onValueChange = { email = it }, // it 是用户输入的新值
                 label = { Text("邮箱") },
                 isError = emailError != null,
+                /*
+                 ?.let 是 Kotlin 中处理可空类型的优雅方式：
+                  - 安全：避免空指针异常
+                  - 简洁：比 if-else 更简洁
+                  - 链式：支持函数链式调用
+                  - 作用域：在代码块中使用 it 引用对象
+                * */
                 supportingText = emailError?.let { { Text(it) } }
             )
 
-            OutlinedTextField(
+            /*   OutlinedTextField(
+                   value = password,
+                   onValueChange = { password = it },
+                   label = { Text("密码") },
+                   visualTransformation = PasswordVisualTransformation(),
+                   isError = passwordError != null,
+                   supportingText = passwordError?.let { { Text(it) } }
+               )*/
+            PasswordTextField(
                 value = password,
                 onValueChange = { password = it },
-                label = { Text("密码") },
-                visualTransformation = PasswordVisualTransformation(),
+                label = { Text("--密码--") },
                 isError = passwordError != null,
-                supportingText = passwordError?.let { { Text(it) } }
+                errorMessage = passwordError
             )
+
             Row {
                 Button(
                     onClick = {
@@ -140,50 +158,50 @@ class MainActivity10 : ComponentActivity() {
         }
     }
 
-    @Composable
-    fun DeleteConfirmDialog(
-        onConfirm: () -> Unit,
-        onDismiss: () -> Unit
-    ) {
-        AlertDialog(
-            onDismissRequest = onDismiss,
-            title = { Text("确认删除") },
-            text = { Text("确定要删除这个项目吗？此操作无法撤销。") },
-            confirmButton = {
-                TextButton(
-                    onClick = onConfirm,
-                    colors = ButtonDefaults.textButtonColors(
-                        contentColor = MaterialTheme.colorScheme.error
-                    )
-                ) {
-                    Text("删除")
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = onDismiss) {
-                    Text("取消")
-                }
-            }
-        )
-    }
+//    @Composable
+//    fun DeleteConfirmDialog(
+//        onConfirm: () -> Unit,
+//        onDismiss: () -> Unit
+//    ) {
+//        AlertDialog(
+//            onDismissRequest = onDismiss,
+//            title = { Text("确认删除") },
+//            text = { Text("确定要删除这个项目吗？此操作无法撤销。") },
+//            confirmButton = {
+//                TextButton(
+//                    onClick = onConfirm,
+//                    colors = ButtonDefaults.textButtonColors(
+//                        contentColor = MaterialTheme.colorScheme.error
+//                    )
+//                ) {
+//                    Text("删除")
+//                }
+//            },
+//            dismissButton = {
+//                TextButton(onClick = onDismiss) {
+//                    Text("取消")
+//                }
+//            }
+//        )
+//    }
 
     // 自定义 Dialog
-    @Composable
-    fun CustomDialog(
-        onDismiss: () -> Unit,
-        content: @Composable () -> Unit
-    ) {
-        Dialog(onDismissRequest = onDismiss) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                shape = MaterialTheme.shapes.extraLarge
-            ) {
-                content()
-            }
-        }
-    }
+//    @Composable
+//    fun CustomDialog(
+//        onDismiss: () -> Unit,
+//        content: @Composable () -> Unit
+//    ) {
+//        Dialog(onDismissRequest = onDismiss) {
+//            Card(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(16.dp),
+//                shape = MaterialTheme.shapes.extraLarge
+//            ) {
+//                content()
+//            }
+//        }
+//    }
 }
 
 /**
