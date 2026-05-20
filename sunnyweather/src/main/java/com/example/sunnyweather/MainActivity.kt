@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -84,6 +85,7 @@ class MainActivity : AppCompatActivity() {
 
         // 下拉刷新
         refresh.setOnRefreshListener {
+            Toast.makeText(this, "正在刷新...", Toast.LENGTH_SHORT).show()
             viewModel.getWeather(currentCity)
         }
     }
@@ -91,12 +93,13 @@ class MainActivity : AppCompatActivity() {
     // 观察ViewModel数据
     private fun observeData() {
         viewModel.weatherData.observe(this) {
-            temp.text = it.result.realtime.temperature.toInt().toString() + "°"
+            temp.text =
+                it.result.realtime.temperature.toInt().toString() + "°" // it 是 weatherData 的值
             weather.text = it.result.realtime.skycon.replace("_", " ")
         }
 
         viewModel.isRefreshing.observe(this) {
-            refresh.isRefreshing = it
+            refresh.isRefreshing = it // it 是 isRefreshing 的值
         }
     }
 
