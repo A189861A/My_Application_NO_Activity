@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.sunnyweather.model.WeatherResponse
 import com.example.sunnyweather.repository.WeatherRepo
 import kotlinx.coroutines.launch
+
 /*
 * WeatherViewModel：是一个 ViewModel 类，
 * - 管理UI数据。
@@ -13,6 +14,7 @@ import kotlinx.coroutines.launch
 * */
 class WeatherViewModel : ViewModel() {
     private val repo = WeatherRepo()
+
     /*
     * MutableLiveData<WeatherResponse>：是一个可观察的数据容器，
     *   - 当数据发生变化时，会自动通知所有观察者。
@@ -34,8 +36,14 @@ class WeatherViewModel : ViewModel() {
         * - postValue：将数据更新到 LiveData 中，并通知所有观察者。
         * * */
         viewModelScope.launch {
-            repo.fetchWeather(city) {
-                weatherData.postValue(it)
+            repo.fetchWeather(city) { data ->
+                /*
+                * ?.    安全调用操作符
+                * let   作用域函数，用于在对象不为空时执行代码块。
+                *   -- 把调用它的对象，作为参数（默认名字是 it）传递给后面的 Lambda 表达式。
+                *   -- 提供一个局部作用域，在这个作用域内可以处理这个对象，并返回一个结果（Lambda 的最后一行）。
+                * */
+                data?.let { weatherData.postValue(it) }
                 isRefreshing.postValue(false)
             }
         }

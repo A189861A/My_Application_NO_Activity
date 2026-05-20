@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weather: TextView
     private lateinit var refresh: SwipeRefreshLayout
     private lateinit var viewModel: WeatherViewModel
+
     /*
     * registerForActivityResult：向系统注册一个 Activity 结果回调。
     *   这意味着当子页面返回结果时，系统会自动执行后面花括号 { ... } 里的代码。
@@ -34,18 +35,19 @@ class MainActivity : AppCompatActivity() {
     *   这是一个 Lambda 表达式，用于处理子页面返回的结果。
     *   当子页面调用 setResult() 并关闭时，系统会自动调用这个 Lambda 表达式。
     * */
-    private val cityChangeLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val city = result.data?.getStringExtra("city")
-            if (!city.isNullOrEmpty()) {
-                currentCity = city
-                viewModel.getWeather(currentCity)
+    private val cityChangeLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val city = result.data?.getStringExtra("city")
+                if (!city.isNullOrEmpty()) {
+                    currentCity = city
+                    viewModel.getWeather(currentCity)
+                }
             }
         }
-    }
 
-    //    private var currentCity = "116.403874,39.914885" // 北京经纬度
-    private var currentCity = "121.473701,31.230416" // 上海经纬度
+    private var currentCity = "116.403874,39.914885" // 北京经纬度
+//      private var currentCity = "121.473701,31.230416" // 上海经纬度
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         playBgVideo()
         observeData()
     }
+
     private fun initView() {
         videoView = findViewById(R.id.videoView)
         temp = findViewById(R.id.temp)
