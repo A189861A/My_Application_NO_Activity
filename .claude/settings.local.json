@@ -6,7 +6,10 @@
       "Bash(./gradlew :sunnyweather:clean *)",
       "Bash(adb devices *)",
       "Bash(adb logcat *)",
-      "Bash(adb *)"
+      "Bash(adb *)",
+      "mcp__ide__getDiagnostics",
+      "Bash(ls gradlew*)",
+      "Bash(cat gradle/wrapper/gradle-wrapper.properties)"
     ]
   }
 }

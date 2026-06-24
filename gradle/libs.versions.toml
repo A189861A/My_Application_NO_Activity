@@ -24,6 +24,8 @@ uiUnit = "1.11.1"
 foundation = "1.11.1"
 uiGeometry = "1.11.1"
 cameraCamera2Pipe = "1.6.1"
+cameraCore = "1.6.1"
+runtimeVersion = "1.11.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -57,6 +59,8 @@ androidx-compose-ui-unit = { group = "androidx.compose.ui", name = "ui-unit", ve
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
 androidx-compose-ui-geometry = { group = "androidx.compose.ui", name = "ui-geometry", version.ref = "uiGeometry" }
 androidx-camera-camera2-pipe = { group = "androidx.camera", name = "camera-camera2-pipe", version.ref = "cameraCamera2Pipe" }
+androidx-camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "cameraCore" }
+androidx-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtimeVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
