@@ -75,7 +75,9 @@ class CardSample : AppCompatActivity() {
             ) {
                 Text(if (visible) "隐藏" else "显示")
             }
-
+            /*
+            * 为组件的显示和隐藏添加过渡动画的核心 API
+            * */
             AnimatedVisibility(
                 visible = visible,
                 /*
