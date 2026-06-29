@@ -10,7 +10,9 @@
       "mcp__ide__getDiagnostics",
       "Bash(ls gradlew*)",
       "Bash(cat gradle/wrapper/gradle-wrapper.properties)",
-      "Bash(./gradlew composeapp:dependencies --configuration implementation --no-daemon)"
+      "Bash(./gradlew composeapp:dependencies --configuration implementation --no-daemon)",
+      "Bash(git commit *)",
+      "Bash(git add *)"
     ]
   }
 }

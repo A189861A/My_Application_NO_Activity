@@ -143,6 +143,7 @@ class LazyColumnDemo : AppCompatActivity() {
             },
             content = {
                 ContactsItem(item, onClick)
+
             }
         )
     }
