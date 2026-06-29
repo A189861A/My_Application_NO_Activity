@@ -9,22 +9,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".DialogSample"
+            android:name=".ScaffoldSample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".DialogSample"
+            android:exported="true"></activity>
+        <activity
             android:name=".CardSample"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".LazyColumnDemo"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
