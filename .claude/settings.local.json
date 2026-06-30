@@ -12,7 +12,9 @@
       "Bash(cat gradle/wrapper/gradle-wrapper.properties)",
       "Bash(./gradlew composeapp:dependencies --configuration implementation --no-daemon)",
       "Bash(git commit *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(./gradlew :app3:kaptDebugKotlin --stacktrace)",
+      "Bash(./gradlew :app3:kaptDebugKotlin)"
     ]
   }
 }
