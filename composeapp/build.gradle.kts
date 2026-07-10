@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.ui.geometry)
     implementation(libs.androidx.compose.animation)
     implementation(libs.androidx.ui.unit)
+    implementation(libs.ui)
     debugImplementation(libs.androidx.compose.ui.tooling)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
