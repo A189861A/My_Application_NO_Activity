@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -46,6 +47,7 @@ class DialogSample : AppCompatActivity() {
     }
 }
 
+@Preview(showBackground = true)
 @Composable
 //基础 AlertDialog 弹窗（提示框 / 确认弹窗）
 fun SimpleDialogDemo() {
@@ -82,6 +84,7 @@ fun SimpleDialogDemo() {
     }
 }
 
+@Preview(showBackground = true)
 @Composable
 // 全屏弹窗
 fun FullScreenDialogDemo() {
