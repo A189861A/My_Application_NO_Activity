@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".ProduceStateSample"
+            android:name=".SnapshotFlowSample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +18,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ProduceStateSample"
+            android:exported="true">
+   
+        </activity>
+        <activity
             android:name=".DerivedStateSample"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".DropdownMenuSample"
             android:exported="true" />
