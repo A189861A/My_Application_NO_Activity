@@ -9,13 +9,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".StatusScreenSample"
+            android:name=".CompositionLocalSample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".StatusScreenSample"
+            android:exported="true">
+
         </activity>
         <activity
             android:name=".StatusWrapSample"
