@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.core.view.ViewCompat
@@ -31,7 +32,11 @@ class StatusWrapSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ConstraintLayout(Modifier.fillMaxSize()) {
+            ConstraintLayout(
+                Modifier
+                    .fillMaxSize()
+                    .background(Color.LightGray)
+            ) {
                 val (box) = createRefs()
                 Box(
                     modifier = Modifier
@@ -88,7 +93,7 @@ class StatusWrapSample : AppCompatActivity() {
         ) {
             Text(text = "Count: $count")
             Button(onClick = onIncrement) {
-                Text("+")
+                Text("+", fontSize = 20.sp, color = Color.Red)
             }
             Button(onClick = onDecrement) {
                 Text("-")
