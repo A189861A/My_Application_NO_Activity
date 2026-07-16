@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.androidx.foundation.layout)
     implementation(libs.ui.graphics)
     implementation(libs.androidx.ui.geometry)
