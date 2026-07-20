@@ -9,6 +9,9 @@ import kotlinx.coroutines.flow.Flow
 /**
  * Room 数据访问对象
  */
+/*
+* @Dao 注解：告诉 Room 这是一个数据访问对象
+* */
 @Dao
 interface UserDao {
     @Query("SELECT * FROM users ORDER BY id ASC")

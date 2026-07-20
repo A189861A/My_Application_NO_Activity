@@ -24,8 +24,9 @@ import kotlinx.coroutines.launch
  */
 class UserListViewModel(application: Application) : AndroidViewModel(application) {
     /*
-    * getInstance：获取数据库实例
-    * getInstance(application)：返回 Room 生成的 DAO 实现 (数据库单例)
+    * getInstance：获取 Room 生成的数据库实例
+    * .getInstance(application)：返回 Room 生成的 DAO 实现 (数据库单例)
+    * .userDao() ：调用数据库实例里的 userDao() 方法
     * */
     private val userDao = UserDatabase.getInstance(application).userDao()
     private val remoteDataSource = FakeUserRemoteDataSource()
