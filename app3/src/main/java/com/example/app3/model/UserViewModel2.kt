@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class UserViewModel2(application: Application) : AndroidViewModel(application) {
     // 获取数据库实例和 Dao
     private val db = AppDatabase.getInstance(application)
-    private val userDao = db.userDao()
+    private val userDao = db.userDao() // 这里返回的是 Room 自动生成的 DAO 实现
 
     // 观察所有用户数据（供UI层观察）
     /*

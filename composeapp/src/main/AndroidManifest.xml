@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".CompositionLocalSample"
+            android:name=".ui.userlist.UserIforList"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +18,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".CompositionLocalSample"
+            android:exported="true" />
+        <activity
             android:name=".StatusScreenSample"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".StatusWrapSample"
             android:exported="true" />
