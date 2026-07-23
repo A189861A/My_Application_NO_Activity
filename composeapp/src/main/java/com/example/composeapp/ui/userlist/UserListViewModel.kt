@@ -110,7 +110,31 @@ class UserListViewModel(application: Application) : AndroidViewModel(application
  * UI 状态密封类
  */
 sealed class UserListUiState {
+    /*
+    * data object: 普通 object（单例,单例没有构造参数） + data class 的自动特性.
+写法          	            实例数量	            自动生成方法	                              适用场景
+object A	                 单例	    无自动 toString/equals 优化	                    普通工具单例
+data object A	             单例	    toString、equals、hashCode	                    密封层级的无参结果、状态
+data class A(val x:Int) 	多实例	    toString、equals、hashCode、copy、componentN	    携带数据实体
+   *
+   * */
+
     data object Loading : UserListUiState()
+
+    /*
+    *   data class: Kotlin 的数据类(多实例)
+      ┌───────────────────────┬─────────────────────────────────────────────────┐
+      │    自动生成的方法        │                      作用                       │
+      ├───────────────────────┼─────────────────────────────────────────────────┤
+      │ toString()            │ "Success(users=[User(id=1,name=...), ...])"     │
+      ├───────────────────────┼─────────────────────────────────────────────────┤
+      │ equals() / hashCode() │ 基于 users 字段比较两个 Success 是否相等            │
+      ├───────────────────────┼─────────────────────────────────────────────────┤
+      │ copy()                │ Success(users).copy(users = newList) 复制并修改   │
+      ├───────────────────────┼─────────────────────────────────────────────────┤
+      │ componentN()          │ val (users) = success 解构声明                   │
+      └───────────────────────┴─────────────────────────────────────────────────┘
+    * */
     data class Success(val users: List<User>) : UserListUiState()
     data class Error(val message: String) : UserListUiState()
 }
