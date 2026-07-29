@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <activity
-            android:name=".CoroutineBuilderSample"
+            android:name=".LiveDataSample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,11 +18,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".CoroutineBuilderSample"
+            android:exported="true">
+    
+        </activity>
+        <activity
             android:name=".CustomCoroutineScope"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".SupervisorScopeSample"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RunBlockingSample"
             android:exported="true" />
