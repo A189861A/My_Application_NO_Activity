@@ -13,6 +13,7 @@ class LiveDataSample : AppCompatActivity() {
     private lateinit var vm: DemoViewModel
     private lateinit var tvText: TextView
     private lateinit var btnAdd: Button
+    private lateinit var btnReset: Button
     private lateinit var btnNet: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +21,9 @@ class LiveDataSample : AppCompatActivity() {
         setContentView(R.layout.activity_live_data_sample)
 
         tvText = findViewById(R.id.tv_text)
-        btnAdd = findViewById(R.id.btn_add)
         btnNet = findViewById(R.id.btn_net)
+        btnAdd = findViewById(R.id.btn_add)
+        btnReset = findViewById(R.id.btn_reset)
         /*
          * Activity 中写 val vm = MyViewModel()，每次 Activity 因为屏幕旋转等配置变更被销毁并重建时，
             MyViewModel() 都会被重新执行，你之前保存的数据就全丢了
@@ -45,6 +47,10 @@ class LiveDataSample : AppCompatActivity() {
 
         btnNet.setOnClickListener {
             vm.simulateNetRequest()
+        }
+
+        btnReset.setOnClickListener {
+            vm.reset()
         }
 
     }

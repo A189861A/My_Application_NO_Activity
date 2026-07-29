@@ -29,7 +29,7 @@ class DemoViewModel : ViewModel() {
     // 子线程模拟网络请求，演示 postValue
     fun simulateNetRequest() {
         viewModelScope.launch(Dispatchers.IO) {
-            delay(2000)
+            delay(1000)
             val netResult = (_count.value ?: 0) + 1
             // 子线程不能使用 .value，使用 postValue
             _count.postValue(netResult)
