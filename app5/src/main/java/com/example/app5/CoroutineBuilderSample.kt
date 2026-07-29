@@ -15,6 +15,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
 import kotlin.system.measureTimeMillis
 import kotlin.uuid.Uuid
 
@@ -117,6 +118,15 @@ class CoroutineBuilderSample : AppCompatActivity() {
             withContext(Dispatchers.IO) {
                 println("withContext")
             }
+            /*
+            * withTimeout 函数用于指定协程的运行超时时间，如果超时则会抛出 TimeoutCancellationException，
+            * 从而令协程结束运行
+            * */
+            val ret_1 = withTimeout(3000) {
+                delay(2000)
+                200
+            }
+            println("ret_1=$ret_1") // 超时抛出 TimeoutCancellationException 异常
         }
         /*
         * 由于 withContext 方法本身就是一个挂起函数，因此 get 方法也必须定义为挂起函数
