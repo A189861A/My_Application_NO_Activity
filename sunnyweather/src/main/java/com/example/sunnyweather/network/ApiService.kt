@@ -11,12 +11,18 @@ import okhttp3.Request
 * - 创建一个对象，并定义对象内的属性和方法.
 * */
 object ApiService {
-    private const val TOKEN = "teHHeQ4HjH4SuMQ2"
+    private const val KEY = "34731b60e3fddfe99f78c8aa4c6b5fbb"
 
+    /*
+    * 高德天气查询接口：
+    *   - city：城市 adcode（行政区划编码），例如 110101 = 北京市东城区
+    *   - key：高德开放平台申请的 Web 服务 Key
+    *   - extensions：base 返回实况天气（lives），all 返回预报天气（forecasts）
+    * */
     fun getWeather(city: String, callback: (String) -> Unit) {
         Log.d("--city--", "city: $city")
-        val url = "https://api.caiyunapp.com/v2.6/$TOKEN/$city/realtime"
-//        val url = "https://api.caiyunapp.com/v2.6/teHHeQ4HjH4SuMQ2/101.6656,39.2072/realtime"
+        val url =
+            "https://restapi.amap.com/v3/weather/weatherInfo?city=$city&key=$KEY&extensions=base"
         /*
         *
         *

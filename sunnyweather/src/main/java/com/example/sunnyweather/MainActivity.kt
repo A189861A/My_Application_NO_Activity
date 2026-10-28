@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-    private var currentCity = "116.403874,39.914885" // 北京经纬度
-//      private var currentCity = "121.473701,31.230416" // 上海经纬度
+    private var currentCity = "110100" // 北京市 adcode（下拉列表只到地级市）
+//      private var currentCity = "310100" // 上海市 adcode
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +69,10 @@ class MainActivity : AppCompatActivity() {
             /*
             * launch：启动一个 Activity。
             * */
-            cityChangeLauncher.launch(Intent(this, CityChangeActivity::class.java))
+            cityChangeLauncher.launch(
+                Intent(this, CityChangeActivity::class.java)
+                    .putExtra("currentCity", currentCity) // 传给下拉框，默认选中当前城市
+            )
         }
     }
 
@@ -93,13 +96,21 @@ class MainActivity : AppCompatActivity() {
     // 观察ViewModel数据
     private fun observeData() {
         viewModel.weatherData.observe(this) {
-            temp.text =
-                it.result.realtime.temperature.toInt().toString() + "°" // it 是 weatherData 的值
-            weather.text = it.result.realtime.skycon.replace("_", " ")
+            // lives 为 null 或空（接口返回失败结构时），取不到就直接返回
+            val live = it.lives?.firstOrNull() ?: return@observe
+            temp.text = "${live.temperature ?: "--"}°" // it 是 weatherData 的值
+            weather.text = live.weather ?: "--"
         }
 
         viewModel.isRefreshing.observe(this) {
             refresh.isRefreshing = it // it 是 isRefreshing 的值
+        }
+
+        viewModel.errorMessage.observe(this) { msg ->
+            if (!msg.isNullOrEmpty()) {
+                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                viewModel.errorMessage.value = null // 消费掉，避免旋转屏幕后重复提示
+            }
         }
     }
 

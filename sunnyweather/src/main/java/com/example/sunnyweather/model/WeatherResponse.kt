@@ -21,21 +21,30 @@ package com.example.sunnyweather.model
         var b:Int = 0 // b 不参与 equals/toString
     }
 * */
+/*
+* 高德天气接口的返回结构：
+*   成功：{"status":"1","count":"1","info":"OK","infocode":"10000","lives":[{...}]}
+*   失败：{"status":"0","count":"0","info":"INVALID_PARAMS","infocode":"20003"}
+* 失败时没有 lives 字段。Gson 不校验 Kotlin 的非空约束，会把缺失字段直接赋成 null，
+* 所以可能缺失的字段都声明为可空类型，让编译器强制使用方处理 null。
+* */
 data class WeatherResponse(
-    val result: Result // 主构造函数
+    val status: String? = null,  // "1" 成功，"0" 失败
+    val count: String? = null,
+    val info: String? = null,    // 错误描述
+    val infocode: String? = null,
+    val lives: List<Live>? = null // 实况天气列表，失败时为 null
 )
 
-data class Result(
-    val realtime: Realtime
-)
-
-data class Realtime(
-    val temperature: Float, // 温度
-    val skycon: String,     // 天气：晴/雨/云
-    val humidity: Float,    // 湿度
-    val wind: Wind
-)
-
-data class Wind(
-    val speed: Float
+// 实况天气。高德接口返回的数值都是字符串，所以这里统一用 String 接收
+data class Live(
+    val province: String? = null,    // 省份
+    val city: String? = null,        // 城市
+    val adcode: String? = null,      // 城市编码
+    val weather: String? = null,     // 天气：晴/阴/雨
+    val temperature: String? = null, // 温度
+    val winddirection: String? = null,
+    val windpower: String? = null,
+    val humidity: String? = null,    // 湿度
+    val reporttime: String? = null   // 发布时间
 )

@@ -7,16 +7,15 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <EditText
-        android:id="@+id/edit_city"
-        android:hint="输入经纬度，如：116.403874,39.914885"
-        android:text="116.403874,39.914885"
+    <Spinner
+        android:id="@+id/spinner_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_confirm"
         android:text="确定切换"
+        android:enabled="false"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

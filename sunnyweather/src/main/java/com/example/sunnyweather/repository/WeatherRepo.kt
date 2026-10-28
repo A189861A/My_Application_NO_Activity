@@ -1,5 +1,6 @@
 package com.example.sunnyweather.repository
 
+import android.util.Log
 import com.example.sunnyweather.model.WeatherResponse
 import com.example.sunnyweather.network.ApiService
 import com.google.gson.Gson
@@ -24,7 +25,18 @@ class WeatherRepo {
                 * Gson：一个 Java 语言下的 Json 解析库，用于将 Json 字符串转换成 Java 对象，或者将 Java 对象转换成 Json 字符串。
                 * */
                 val data = Gson().fromJson(it, WeatherResponse::class.java)
-                callback(data)
+                /*
+                * Gson 解析成功不代表接口调用成功：
+                * - 高德失败时返回 {"status":"0","info":"INVALID_PARAMS",...}，是合法 JSON，
+                *   解析出来 status 为 "0"、lives 为 null。
+                * - 所以这里校验 status 和 lives，不合法就交给上层按失败处理。
+                * */
+                if (data != null && data.status == "1" && !data.lives.isNullOrEmpty()) {
+                    callback(data)
+                } else {
+                    Log.e("WeatherRepo", "invalid response: $it")
+                    callback(null)
+                }
             } catch (e: Exception) {
                 callback(null)
             }

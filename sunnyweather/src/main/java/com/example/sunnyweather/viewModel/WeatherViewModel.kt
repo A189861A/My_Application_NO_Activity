@@ -23,6 +23,9 @@ class WeatherViewModel : ViewModel() {
     val weatherData = MutableLiveData<WeatherResponse>()
     val isRefreshing = MutableLiveData<Boolean>()
 
+    // 请求失败时给UI的提示信息，null 表示没有错误
+    val errorMessage = MutableLiveData<String?>()
+
     // 获取天气
     fun getWeather(city: String) {
         isRefreshing.postValue(true)
@@ -44,6 +47,9 @@ class WeatherViewModel : ViewModel() {
                 *   -- 提供一个局部作用域，在这个作用域内可以处理这个对象，并返回一个结果（Lambda 的最后一行）。
                 * */
                 data?.let { weatherData.postValue(it) }
+                if (data == null) {
+                    errorMessage.postValue("天气获取失败，请检查网络或城市编码")
+                }
                 isRefreshing.postValue(false)
             }
         }
