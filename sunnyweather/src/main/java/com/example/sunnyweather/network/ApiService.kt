@@ -24,12 +24,14 @@ object ApiService {
         val url =
             "https://restapi.amap.com/v3/weather/weatherInfo?city=$city&key=$KEY&extensions=base"
         /*
-        *
-        *
+        * OkHttpClient：
+        *   HTTP 网络请求框架,是一个 HTTP 客户端，它封装了 HTTP 协议的细节，使得开发者可以更方便地进行网络请求
+        *   默认使用 GET 方法
+        * Request: HTTP 请求对象，包含了请求的 URL、请求头、请求体等信息。
         * */
         val client = OkHttpClient()
         // 构建一个包含了目标 URL 的 HTTP 请求对象
-        val request = Request.Builder().url(url).build()
+        val request = Request.Builder().url(url).get().build()
         /*
         * 开启子线程
         * Thread：子线程 是代表操作系统线程的类。它是程序执行的最小单元，拥有独立的执行路径和调用栈。

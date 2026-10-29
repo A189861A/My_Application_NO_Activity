@@ -22,7 +22,9 @@ class WeatherRepo {
             }
             try {
                 /*
-                * Gson：一个 Java 语言下的 Json 解析库，用于将 Json 字符串转换成 Java 对象，或者将 Java 对象转换成 Json 字符串。
+                * Gson：一个 Java 语言下的 Json 解析库，用于将 Json 字符串转换成 Java 对象，
+                * 或者将 Java 对象转换成 Json 字符串。
+                * fromJson： 将 Json 字符串转换成 Java 对象。
                 * */
                 val data = Gson().fromJson(it, WeatherResponse::class.java)
                 /*

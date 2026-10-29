@@ -16,6 +16,13 @@ class WeatherViewModel : ViewModel() {
     private val repo = WeatherRepo()
 
     /*
+    * LiveData 类 核心方法：
+    *   - observe()：用于观察数据的变化，当数据发生变化时，会自动通知观察者。
+    *   - postValue()：用于更新数据，当数据更新时，会自动 异步 通知观察者。(任意线程调用)
+    *   - setValue()：用于更新数据，当数据更新时，会自动 同步 通知观察者。（必须在主线程调用）
+    *   - getValue()：用于获取数据。
+    * */
+    /*
     * MutableLiveData<WeatherResponse>：是一个可观察的数据容器，
     *   - 当数据发生变化时，会自动通知所有观察者。
     *   - 这里用于存储天气数据，当天气数据更新时，会自动通知界面更新。

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Weather</string>
+    <!-- 温度格式：%1$s 会被实际温度替换，如 "11°" -->
+    <string name="temperature_format">%1$s°</string>
+    <string name="unknown">--</string>
 </resources>
