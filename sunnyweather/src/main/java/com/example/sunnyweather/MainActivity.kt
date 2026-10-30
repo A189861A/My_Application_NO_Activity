@@ -130,6 +130,9 @@ class MainActivity : AppCompatActivity() {
                 $：分隔符
                 s：参数类型（表示字符串类型） // d：整数（Integer） f：浮点数（Float）  c：字符（Char） b：布尔值（Boolean）
             *
+            * ?: ：为可空类型提供默认值,或者在值为 null 时执行某种兜底逻辑.
+            *       val result = 可空变量 ?: 兜底值
+            *       等价于 Java 中的三元运算符 a != null ? a : b
             * */
             temp.text = getString(
                 R.string.temperature_format,
