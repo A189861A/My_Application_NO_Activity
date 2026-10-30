@@ -36,6 +36,9 @@ class LiveDataSample : AppCompatActivity() {
         vm = ViewModelProvider(this).get(DemoViewModel::class.java)
 
         // 观察 LiveData
+        /*
+        * observe 方法：观察 LiveData 的数据变化，当数据变化时，会回调传入的 lambda 表达式。
+        * */
         vm.count.observe(this) { number ->
             // 页面活跃时自动回调，更新UI
             tvText.text = "当前数值：$number"

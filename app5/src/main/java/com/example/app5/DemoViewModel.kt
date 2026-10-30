@@ -27,6 +27,14 @@ class DemoViewModel : ViewModel() {
     }
 
     // 子线程模拟网络请求，演示 postValue
+    /*
+    * Dispatchers.Main：主线程，负责绘制 UI 和响应用户点击。
+    * Dispatchers.IO：适合 IO 操作，如文件读写、网络请求等。
+    * Dispatchers.Default：适合 CPU 密集型操作，如计算、数据处理等。
+    *
+    * viewModelScope：提供协程作用域，专门绑定到 ViewModel 的生命周期。
+    * 当你在 ViewModel 中使用 viewModelScope.launch 启动一个协程时，这个协程的生命周期就完全交给了 ViewModel。
+    * */
     fun simulateNetRequest() {
         viewModelScope.launch(Dispatchers.IO) {
             delay(1000)
