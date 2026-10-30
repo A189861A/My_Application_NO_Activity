@@ -1,5 +1,6 @@
 package com.example.app5
 
+import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -10,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 
 class LiveDataSample : AppCompatActivity() {
+    lateinit var timeChangeReceiver: TimeChangeReceiver
     private lateinit var vm: DemoViewModel
     private lateinit var tvText: TextView
     private lateinit var btnAdd: Button
@@ -56,5 +58,25 @@ class LiveDataSample : AppCompatActivity() {
             vm.reset()
         }
 
+        /*
+        * 当系统时间发生变化时，系统发出的正是一条值为android.intent.action.TIME_TICK的广播
+        * */
+        val intentFilter = IntentFilter()
+        /*
+        * android.intent.action.TIME_TICK：
+            - 每分钟触发一次.
+            - 只能动态注册，AndroidManifest 静态注册收不到这个广播.
+        * */
+        intentFilter.addAction("android.intent.action.TIME_TICK")
+        timeChangeReceiver = TimeChangeReceiver()
+        // 动态注册监听时间变化
+        registerReceiver(timeChangeReceiver, intentFilter)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // 取消动态注册监听时间变化
+        unregisterReceiver(timeChangeReceiver)
     }
 }

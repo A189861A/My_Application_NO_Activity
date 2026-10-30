@@ -8,6 +8,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
+        <receiver
+            android:name=".TimeChangeReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
         <activity
             android:name=".LiveDataSample"
             android:exported="true">
@@ -19,9 +24,7 @@
         </activity>
         <activity
             android:name=".CoroutineBuilderSample"
-            android:exported="true">
-    
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".CustomCoroutineScope"
             android:exported="true" />
