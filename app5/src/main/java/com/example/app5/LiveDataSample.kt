@@ -19,6 +19,7 @@ class LiveDataSample : AppCompatActivity() {
     private lateinit var btnReset: Button
     private lateinit var btnNet: Button
     private lateinit var btnBroadCast: Button
+    private lateinit var btnSyncBroadCast: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,8 @@ class LiveDataSample : AppCompatActivity() {
         btnAdd = findViewById(R.id.btn_add)
         btnReset = findViewById(R.id.btn_reset)
         btnBroadCast = findViewById(R.id.btn_send_broadcast)
+        btnSyncBroadCast = findViewById(R.id.btn_send_sync_broadcast)
+
         /*
          * Activity 中写 val vm = MyViewModel()，每次 Activity 因为屏幕旋转等配置变更被销毁并重建时，
             MyViewModel() 都会被重新执行，你之前保存的数据就全丢了
@@ -69,6 +72,16 @@ class LiveDataSample : AppCompatActivity() {
             * */
             intent.setPackage(packageName)
             sendBroadcast(intent) // 发送标准广播
+        }
+
+        btnSyncBroadCast.setOnClickListener {
+            val intent = Intent("android.intent.action.MY_BROADCAST")
+            intent.setPackage(packageName)
+            /*
+                有序广播是一种同步执行的广播.
+                优先级高的广播接收器会先接收到广播，并且可以终止广播的传播.
+            * */
+            sendOrderedBroadcast(intent, null) // 发送有序广播
         }
 
         /*

@@ -10,5 +10,7 @@ class MyBroadcastReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Toast.makeText(context, "Received intent with action " + intent.action, Toast.LENGTH_SHORT)
             .show()
+        // 截断/取消当前的有序广播
+        abortBroadcast()
     }
 }

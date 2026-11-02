@@ -35,4 +35,10 @@
         android:layout_height="wrap_content"
         android:text="Send Broadcast" />
 
+    <Button
+        android:id="@+id/btn_send_sync_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送有序广播" />
+
 </LinearLayout>

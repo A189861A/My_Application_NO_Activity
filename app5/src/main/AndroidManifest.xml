@@ -12,10 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <receiver
-            android:name=".MyBroadcastReceiver"
+            android:name=".AnotherBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
+                <action android:name="android.intent.action.MY_BROADCAST" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <!-- 优先级设成了100，以保证它一定会在AnotherBroadcastReceiver之前收到广播 -->
+            <intent-filter android:priority="100">
                 <action android:name="android.intent.action.MY_BROADCAST" />
             </intent-filter>
         </receiver>
