@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- 接收开机广播必须声明此权限，否则 BOOT_COMPLETED 不会送达 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Application_NO_Activity">
         <receiver
-            android:name=".TimeChangeReceiver"
+            android:name=".BootCompleteReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <!--        <receiver-->
+        <!--            android:name=".TimeChangeReceiver"-->
+        <!--            android:enabled="true"-->
+        <!--            android:exported="true" />-->
 
         <activity
             android:name=".LiveDataSample"
@@ -24,7 +35,7 @@
         </activity>
         <activity
             android:name=".CoroutineBuilderSample"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".CustomCoroutineScope"
             android:exported="true" />
