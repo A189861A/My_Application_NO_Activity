@@ -1,5 +1,6 @@
 package com.example.app5
 
+import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.Button
@@ -17,6 +18,7 @@ class LiveDataSample : AppCompatActivity() {
     private lateinit var btnAdd: Button
     private lateinit var btnReset: Button
     private lateinit var btnNet: Button
+    private lateinit var btnBroadCast: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,7 @@ class LiveDataSample : AppCompatActivity() {
         btnNet = findViewById(R.id.btn_net)
         btnAdd = findViewById(R.id.btn_add)
         btnReset = findViewById(R.id.btn_reset)
+        btnBroadCast = findViewById(R.id.btn_send_broadcast)
         /*
          * Activity 中写 val vm = MyViewModel()，每次 Activity 因为屏幕旋转等配置变更被销毁并重建时，
             MyViewModel() 都会被重新执行，你之前保存的数据就全丢了
@@ -56,6 +59,16 @@ class LiveDataSample : AppCompatActivity() {
 
         btnReset.setOnClickListener {
             vm.reset()
+        }
+
+        btnBroadCast.setOnClickListener {
+            val intent = Intent("android.intent.action.MY_BROADCAST")
+            /*
+            * packageName是getPackageName()的语法糖写法，用于获取当前应用程序的包名。
+            * setPackage：告诉 Android 系统，这个 Intent 只发给包名为 packageName 的应用，不要发给其他应用。
+            * */
+            intent.setPackage(packageName)
+            sendBroadcast(intent) // 发送标准广播
         }
 
         /*

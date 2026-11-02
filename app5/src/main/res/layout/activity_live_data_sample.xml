@@ -29,4 +29,10 @@
         android:layout_height="wrap_content"
         android:text="模拟网络请求" />
 
+    <Button
+        android:id="@+id/btn_send_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Broadcast" />
+
 </LinearLayout>
