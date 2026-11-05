@@ -37,9 +37,9 @@ class MainActivity16 : AppCompatActivity() {
                     * 它的核心作用是简化权限请求和其他兼容性处理。
                     * */
                     ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(Manifest.permission.CALL_PHONE),
-                        1
+                        this,   // 1. Activity 对象
+                        arrayOf(Manifest.permission.CALL_PHONE), // 2. 权限数组
+                        1   // 3. 请求码
                     )
                 } else {
                     call()
@@ -51,7 +51,10 @@ class MainActivity16 : AppCompatActivity() {
 
 
     }
+
     /*
+    *onRequestPermissionsResult 是 Activity（或 Fragment）中的一个生命周期回调方法。
+    *
     * 当应用通过 ActivityCompat.requestPermissions 向用户请求权限后，
     * 用户在系统弹窗中选择“允许”或“拒绝”，系统会自动调用此方法。
     *
@@ -61,9 +64,9 @@ class MainActivity16 : AppCompatActivity() {
     *   （PackageManager.PERMISSION_GRANTED 或 PackageManager.PERMISSION_DENIED）。
     * */
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
+        requestCode: Int,   // 1. 请求码，调用 requestPermissions 时传入的自定义整数
+        permissions: Array<String>, // 2. 申请的权限数组
+        grantResults: IntArray  // 3. 授权结果数组
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 //        when 是 Kotlin 中的条件分支语句，类似于 Java 中的 switch-case

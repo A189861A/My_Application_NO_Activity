@@ -16,8 +16,18 @@ import androidx.core.view.WindowInsetsCompat
 
 class MainActivity17 : AppCompatActivity() {
     private val TAG = "ClientApp"
+
     // 核心：必须和提供方的Authority完全一致
     private val PROVIDER_AUTHORITY = "com.example.app2.userprovider"
+
+    /*
+    * 构造一个指向特定数据提供者的统一资源标识符（URI）。
+    content://    com.example.app.provider    /user
+       ^                    ^                   ^
+       |                    |                   |
+    协议头           Authority (授权信息)        Path (路径)
+
+    * */
     private val USER_URI = Uri.parse("content://$PROVIDER_AUTHORITY/user")
 
 
@@ -35,14 +45,18 @@ class MainActivity17 : AppCompatActivity() {
 
     // 读取提供方的数据
     private fun queryUserFromProvider() {
+        /*
+        * contentResolver.query ：跨应用查询数据的核心方法.
+        * */
         val cursor: Cursor? = contentResolver.query(
-            USER_URI,
-            arrayOf("_id", "name", "age"), // 要查询的列
-            null, // 无筛选条件
-            null,
-            "_id DESC"
+            USER_URI, // 1. Uri: 数据地址
+            arrayOf("_id", "name", "age"), // 2. 查询哪些列
+            null, // / 3. 查询条件
+            null,// 4. 查询条件的参数
+            "_id DESC"// 5. 排序规则
         )
         cursor?.let {
+            // 循环遍历每一行数据
             while (it.moveToNext()) {
                 val id = it.getInt(it.getColumnIndexOrThrow("_id"))
                 val name = it.getString(it.getColumnIndexOrThrow("name"))

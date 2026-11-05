@@ -1,4 +1,5 @@
 package com.example.app2
+
 import MyDatabaseHelper
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -9,7 +10,7 @@ import android.net.Uri
 import android.text.TextUtils
 
 /*
-* ontentProvider 是 Android 四大组件之一，主要用于在不同应用之间共享数据，也可以用于应用内部的数据管理
+* contentProvider 是 Android 四大组件之一，主要用于在不同应用之间共享数据，也可以用于应用内部的数据管理
 *
 * */
 class UserContentProvider : ContentProvider() {
@@ -18,6 +19,7 @@ class UserContentProvider : ContentProvider() {
     companion object {
         // Authority：ContentProvider 的唯一标识
         const val AUTHORITY = "com.example.app2.userprovider"
+
         // 内容URI（用于访问ContentProvider）
         val CONTENT_URI = Uri.parse("content://$AUTHORITY/user")
 
@@ -74,6 +76,7 @@ class UserContentProvider : ContentProvider() {
                     sortOrder
                 )
             }
+
             USER_ID -> {
                 // 根据id查询单个用户
                 val id = uri.lastPathSegment // 获取URI中的id
@@ -87,6 +90,7 @@ class UserContentProvider : ContentProvider() {
                     sortOrder
                 )
             }
+
             else -> throw IllegalArgumentException("未知的URI: $uri")
         }
         // 设置通知Uri，当数据变化时通知ContentResolver
@@ -125,6 +129,7 @@ class UserContentProvider : ContentProvider() {
                 val id = uri.lastPathSegment
                 db.delete("user", "_id=?", arrayOf(id))
             }
+
             else -> throw IllegalArgumentException("未知的URI: $uri")
         }
         if (deleteCount > 0) {
@@ -146,6 +151,7 @@ class UserContentProvider : ContentProvider() {
                 val id = uri.lastPathSegment
                 db.update("user", values, "_id=?", arrayOf(id))
             }
+
             else -> throw IllegalArgumentException("未知的URI: $uri")
         }
         if (updateCount > 0) {
