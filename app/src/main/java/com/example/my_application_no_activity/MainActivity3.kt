@@ -50,6 +50,9 @@ class MainActivity3 : AppCompatActivity() {
 //        item 布局中包含了可获得焦点的控件（如 Button、CheckBox 等），这些控件默认会拦截父容器的点击事件。
 //        通过设置这些控件的 focusable 和 clickable 属性为 false 可以解决问题
         val adapter = FruitAdapter(this, R.layout.fruit_item, fruitList);
+        /*
+        * listView.adapter：为 ListView 绑定数据源和视图渲染规则。它是连接“数据”和“UI界面”的桥梁。
+        * */
         listView.adapter = adapter;
 
         listView.setOnItemClickListener { parent, view, position, id ->
