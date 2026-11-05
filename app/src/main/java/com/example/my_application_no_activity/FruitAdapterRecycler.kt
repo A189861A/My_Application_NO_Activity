@@ -32,10 +32,19 @@ class FruitAdapterRecycler(val fruitList: List<Fruit>) :
         * parent: 父视图组，用于正确的布局参数
         * false: 不立即附加到父视图
         * */
+        // 将一个 XML 布局文件转换为实际的 View 对象
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.fruit_item_vertical, parent, false)
-
+        /*
+        * ViewHolder(view) 是 RecyclerView.ViewHolder 的构造函数调用，用于创建一个 ViewHolder 实例，
+        * 并缓存列表项中的子视图引用
+        * */
         val viewHolder = ViewHolder(view)
+        /*
+        * viewHolder.itemView 是 RecyclerView.ViewHolder 类的一个属性，它代表当前 ViewHolder 所持有的根布局视图.
+        * itemView 是你在 onCreateViewHolder 方法中通过 inflate 加载的列表项（Item）的根布局视图。
+        * 它是整个列表项视图的容器，所有的子视图（如 TextView、ImageView 等）都是它的子视图。
+        * */
         viewHolder.itemView.setOnClickListener {
             val position = viewHolder.adapterPosition
             val fruit = fruitList[position]

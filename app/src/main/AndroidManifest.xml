@@ -33,7 +33,7 @@
         </activity>
         <activity
             android:name=".MainActivity16"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity15"
             android:exported="true" />
@@ -104,6 +104,12 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity6"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity5"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity4"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -112,12 +118,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity5"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity4"
-            android:exported="true" />
         <activity
             android:name=".MainActivity3"
             android:exported="true">

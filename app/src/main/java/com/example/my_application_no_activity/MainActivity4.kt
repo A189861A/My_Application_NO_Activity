@@ -20,12 +20,19 @@ class MainActivity4 : AppCompatActivity() {
         /*
         * 创建布局管理器，并设置给 RecyclerView
         * LinearLayoutManager 是 RecyclerView 的默认布局管理器，它可以实现垂直和水平方向的线性布局
+        * StaggeredGridLayoutManager：瀑布流布局管理器，是 RecyclerView 的三大内置布局管理器之一
+        *   （另外两个是 LinearLayoutManager 和 GridLayoutManager）.
+        * 参数：
+           - 将子项（Item）排列成一个网格。
+           - 每一行的 Item 数量固定（由 spanCount 决定）。
+           - 每一列的高度可以不一样，形成错落有致的视觉效果
         * */
         val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         /*
         * 优化：防止瀑布流自动补空白导致右侧偏移
         * */
         layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+        // 强制 StaggeredGridLayoutManager 重新计算所有 Item 的位置，确保它们正确排列。
         layoutManager.invalidateSpanAssignments()
 
         val recyclerView =
